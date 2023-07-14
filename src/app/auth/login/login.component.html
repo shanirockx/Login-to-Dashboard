@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="col-md-5 m-auto loginBox">
+    <h3>Log In</h3>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label class="col-xs-12">Username*</label>
+        <div class="col-xs-12">
+          <input
+            class="form-control"
+            formControlName="username"
+            type="text"
+            required
+            [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
+          />
+          <div
+            *ngIf="submitted && f['username'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['username'].errors['required']">
+              Username is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="col-xs-12">Password*</label>
+        <div class="col-xs-12">
+          <input
+            class="form-control"
+            formControlName="password"
+            type="password"
+            required
+            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+          />
+          <div
+            *ngIf="submitted && f['password'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['password'].errors['required']">
+              Password is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-danger small">{{ message }}</p>
+      <p class="small">
+        Hint: username: <strong>shani</strong> password:
+        <strong>shani123</strong>
+      </p>
+      <div class="col-xs-12 form-group text-right">
+        <button class="btn btn-success" type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
